@@ -3,7 +3,8 @@
 (setq-default line-spacing 5) ;; Set line spacing
 
 ;; Start in fullscreen
-(set-frame-parameter nil 'fullscreen 'fullboth)
+;; (set-frame-parameter nil 'fullscreen 'fullboth)
+
 
 ;; Unicode settings
 (prefer-coding-system       'utf-8)
@@ -12,12 +13,17 @@
 (set-keyboard-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+(setq system-uses-terminfo nil)
+;; Split horizontaly by default
+(setq split-height-threshold 0)
+(setq split-width-threshold nil)
 
+(setq require-final-newline t) ;; Require new line at the end of file
 (global-visual-line-mode t) ;; Nicely wrap text
 (delete-selection-mode t) ;; Delete selection on write
 (show-paren-mode t) ;; Higlight matching brackets
 (setq-default show-trailing-whitespace t)
-
+(global-auto-revert-mode t) ;; Automatically refresh buffers
 (setq auto-save-default nil) ;; Autosave files
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
   backup-by-copying t    ; Don't delink hardlinks
@@ -27,6 +33,7 @@
   kept-old-versions 5    ; and how many of the old
   )
 
+(display-time)
 (setq inhibit-startup-message t) ;; Get rid of the default startup message
 (setq-default indent-tabs-mode nil) ;; No tabs, just spaces
 (global-linum-mode t) ;; Turn on line numbers in the gutter
@@ -41,12 +48,12 @@
       scroll-preserve-screen-position t)
 
 ;; Enable multi major mode
-(require 'mmm-auto)
-(setq mmm-global-mode 'auto)
-(mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
-(mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.html\\.erb\\'" 'erb)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.eco\\'" 'erb)
+;; (require 'mmm-auto)
+;; (setq mmm-global-mode 'auto)
+;; (mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
+;; (mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
+;; (mmm-add-mode-ext-class 'html-erb-mode "\\.html\\.erb\\'" 'erb)
+;; (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
+;; (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.eco\\'" 'erb)
 
 (provide 'setup-defaults)

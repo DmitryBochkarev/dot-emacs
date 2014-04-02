@@ -10,6 +10,19 @@
 (global-surround-mode t)
 (global-auto-revert-mode t)
 
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
+;; Disable evil for certain major-modes
+(dolist (mode '(eshell-mode shell-mode term-mode terminal-mode comint-mode skewer-repl-mode
+                profiler-report-mode
+                erc-mode weechat-mode
+                direx:direx-mode
+                makey-key-mode
+                project-explorer-mode))
+  (evil-set-initial-state mode 'emacs))
+(evil-set-initial-state 'git-commit-mode 'insert)
+
 ;; Centre screen around a search
 (defadvice
     evil-search-forward
@@ -28,12 +41,5 @@
     (after evil-search-previous-recenter activate)
     (recenter))
 (ad-activate 'evil-search-previous)
-
-;; Start in insert mode / emacs for some modes
-(add-to-list 'evil-emacs-state-modes 'package-menu-mode)
-(evil-set-initial-state 'package-menu-mode 'normal)
-(evil-set-initial-state 'org-capture-mode 'insert)
-(evil-set-initial-state 'git-commit-mode 'insert)
-(evil-set-initial-state 'occur-mode 'normal)
 
 (provide 'setup-evil)

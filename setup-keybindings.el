@@ -1,12 +1,19 @@
 ;; Global bindings
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-S-w") 'close-all-buffers)
-(global-set-key (kbd "C-J") 'switch-to-prev-buffer)
-(global-set-key (kbd "C-K") 'switch-to-next-buffer)
+(global-set-key (kbd "C-{") 'switch-to-prev-buffer)
+(global-set-key (kbd "C-}") 'switch-to-next-buffer)
 (global-set-key (kbd "M-u") 'evil-scroll-up)
 (global-set-key (kbd "M-d") 'evil-scroll-down)
 (global-set-key (kbd "C-S-b") 'pop-tag-mark)
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-a") 'recentf-ido-find-file)
+(global-set-key (kbd "C-o") 'find-file)
+(global-set-key (kbd "C-h") 'helm-dash)
+(global-set-key (kbd "C-d") 'switch-to-buffer)
+(global-set-key (kbd "C-0") 'delete-other-windows)
+(global-set-key (kbd "C-S-w") 'delete-other-windows)
+(global-set-key (kbd "C-S-k") 'kill-buffer-and-window)
 
 ;; Plugin bindings
 
@@ -14,6 +21,7 @@
 (define-key evil-normal-state-map "s" nil)
 (define-key evil-motion-state-map (kbd "C-d") nil)
 (define-key evil-motion-state-map (kbd "C-b") nil)
+(define-key evil-motion-state-map (kbd "C-o") nil)
 (define-key evil-normal-state-map (kbd "C-n") nil)
 (define-key evil-normal-state-map (kbd "C-S-n") nil)
 (define-key evil-normal-state-map (kbd "C-p") nil)
@@ -23,7 +31,7 @@
 
 (define-key evil-normal-state-map (kbd "ga") 'beginning-of-visual-line)
 (define-key evil-normal-state-map (kbd "ge") 'end-of-visual-line)
-(global-set-key (kbd "C-d") 'helm-for-files)
+(define-key evil-insert-state-map [remap evil-delete-backward-char-and-join] 'hungry-delete-backward)
 
 ;; Expand region
 (define-key evil-normal-state-map (kbd "ss") 'er/expand-region)
@@ -47,9 +55,24 @@
 (global-set-key (kbd "C-S-n") 'mc/mark-previous-like-this)
 
 ;; Magit
-(define-key evil-normal-state-map (kbd "gs") 'magit-status)
+
+(define-key evil-normal-state-map (kbd "C-S-g s") 'magit-status)
+(define-key evil-normal-state-map (kbd "C-S-g l") 'magit-file-log)
+(define-key evil-normal-state-map (kbd "C-S-g b") 'magit-blame-mode)
 
 ;; Project explorer
-(define-key evil-normal-state-map (kbd "st") 'project-explorer-open)
+(define-key evil-normal-state-map (kbd "gt") 'project-explorer-open)
+
+;; Rspec
+(define-key evil-normal-state-map (kbd "C-S-r s") 'rspec-verify-single)
+(define-key evil-normal-state-map (kbd "C-S-r f") 'rspec-verify)
+(define-key evil-normal-state-map (kbd "C-S-r a") 'rspec-verify-all)
+(define-key evil-normal-state-map (kbd "C-S-r r") 'rspec-rerun)
+
+;; Cucumber
+(define-key evil-normal-state-map (kbd "C-S-c s") 'feature-verify-scenario-at-pos)
+(define-key evil-normal-state-map (kbd "C-S-c f") 'feature-verify-all-scenarios-in-buffer)
+(define-key evil-normal-state-map (kbd "C-S-c a") 'feature-verify-all-scenarios-in-project)
+(define-key evil-normal-state-map (kbd "C-S-c r") 'rspec-rerun)
 
 (provide 'setup-keybindings)
