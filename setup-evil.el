@@ -42,4 +42,10 @@
     (recenter))
 (ad-activate 'evil-search-previous)
 
+(defadvice
+    evil-goto-line
+    (after evil-goto-line-recenter activate)
+    (recenter))
+(ad-activate 'evil-goto-line)
+
 (provide 'setup-evil)
