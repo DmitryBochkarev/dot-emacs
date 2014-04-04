@@ -23,9 +23,10 @@
 (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
 
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
-(add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
-(add-to-list 'auto-mode-alist '("\\.jst\\.eco\\'"  . html-erb-mode))
+;; Disabling since using web mode
+;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
+;; (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
+;; (add-to-list 'auto-mode-alist '("\\.jst\\.eco\\'"  . html-erb-mode))
 
 ;; Enable Rspec
 (eval-after-load 'rspec-mode

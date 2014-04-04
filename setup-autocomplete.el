@@ -6,6 +6,7 @@
 (setq ac-auto-show-menu .8)
 (ac-flyspell-workaround)
 (add-hook 'robe-mode-hook 'robe-ac-setup)
+(add-to-list 'ac-modes 'web-mode)
 
 ;; Enable company-mode
 ;;(add-hook 'after-init-hook 'global-company-mode)
