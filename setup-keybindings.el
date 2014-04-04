@@ -14,6 +14,7 @@
 (global-set-key (kbd "C-0") 'delete-other-windows)
 (global-set-key (kbd "C-S-w") 'delete-other-windows)
 (global-set-key (kbd "C-S-k") 'kill-buffer-and-window)
+(global-set-key (kbd "C-S-s") 'shell-pop)
 
 ;; Plugin bindings
 

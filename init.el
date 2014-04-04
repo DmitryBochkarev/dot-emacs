@@ -44,6 +44,7 @@
     rinari
     sass-mode
     saveplace
+    shell-pop
     surround
     smartparens
     smart-mode-line
@@ -135,6 +136,9 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
+;; Setup shell pop
+(require 'shell-pop)
+
 ;; Mac specific configuration
 (setq is-mac (equal system-type 'darwin))
 (when is-mac (require 'setup-mac))
@@ -161,7 +165,7 @@
     (snippet-mode)
     (yas-reload-all)))
 
-(defun copy-file-name-to-clipboard ()
+(defun copy-path ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
