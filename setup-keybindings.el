@@ -28,7 +28,7 @@
 (define-key evil-normal-state-map (kbd "C-p") nil)
 (define-key evil-normal-state-map (kbd "C-t") nil)
 (define-key evil-normal-state-map (kbd "DEL") 'switch-to-previous-buffer)
-(define-key evil-motion-state-map (kbd "C-f") nil)
+(define-key evil-motion-state-map (kbd "C-f") 'evil-search-forward)
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 
 (define-key evil-normal-state-map (kbd "ga") 'beginning-of-visual-line)
@@ -43,7 +43,7 @@
 ;; Projectile
 (global-set-key (kbd "C-p") 'projectile-switch-project)
 (global-set-key (kbd "C-t") 'projectile-find-file)
-(global-set-key (kbd "C-f") 'projectile-ag)
+(global-set-key (kbd "C-S-f") 'projectile-ag)
 (global-set-key (kbd "C-r") 'projectile-replace)
 
 ;; Rinari
