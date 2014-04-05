@@ -31,7 +31,7 @@
 (define-key evil-motion-state-map (kbd "C-f") 'evil-search-forward)
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 
-(define-key evil-normal-state-map (kbd "ga") 'beginning-of-visual-line)
+(define-key evil-normal-state-map (kbd "ga") evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "ge") 'end-of-visual-line)
 (define-key evil-insert-state-map [remap evil-delete-backward-char-and-join] 'hungry-delete-backward)
 
