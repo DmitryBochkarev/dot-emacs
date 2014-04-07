@@ -2,6 +2,10 @@
 (require 'ruby-block)
 (ruby-block-mode t)
 
+(require 'inf-ruby)
+(require 'rinari)
+(require 'rspec-mode)
+
 ;; Enhanced Ruby mode
 (inf-ruby-minor-mode +1)
 (ruby-tools-mode +1)
@@ -23,11 +27,6 @@
 (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
 
-;; Disabling since using web mode
-;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jst\\.eco\\'"  . html-erb-mode))
-
 ;; Enable Rspec
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
@@ -35,8 +34,8 @@
 ;; Enable Robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'ruby-mode-hook 'yard-mode)
-;; (add-hook 'enh-ruby-mode-hook 'robe-mode)
-;; (add-hook 'enh-ruby-mode-hook 'yard-mode)
+(add-hook 'enh-ruby-mode-hook 'robe-mode)
+(add-hook 'enh-ruby-mode-hook 'yard-mode)
 
 ;; Enable Feature mode (Cucumber)
 (setq feature-default-language "fi")

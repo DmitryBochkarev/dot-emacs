@@ -3,6 +3,8 @@
 (global-set-key (kbd "C-S-w") 'close-all-buffers)
 (global-set-key (kbd "C-{") 'switch-to-prev-buffer)
 (global-set-key (kbd "C-}") 'switch-to-next-buffer)
+(global-set-key (kbd "C-(") 'winner-undo)
+(global-set-key (kbd "C-)") 'winner-redo)
 (global-set-key (kbd "M-u") 'evil-scroll-up)
 (global-set-key (kbd "M-d") 'evil-scroll-down)
 (global-set-key (kbd "C-S-b") 'pop-tag-mark)
@@ -30,8 +32,9 @@
 (define-key evil-normal-state-map (kbd "DEL") 'switch-to-previous-buffer)
 (define-key evil-motion-state-map (kbd "C-f") 'evil-search-forward)
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
+(define-key evil-insert-state-map (kbd "C-RET") 'emmet-expand-line)
 
-(define-key evil-normal-state-map (kbd "ga") evil-first-non-blank)
+(define-key evil-normal-state-map (kbd "ga") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "ge") 'end-of-visual-line)
 (define-key evil-insert-state-map [remap evil-delete-backward-char-and-join] 'hungry-delete-backward)
 

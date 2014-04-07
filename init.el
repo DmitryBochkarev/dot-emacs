@@ -22,6 +22,7 @@
     evil-nerd-commenter
     evil-matchit
     expand-region
+    emmet-mode
     flx-ido
     flycheck
     flyspell
@@ -40,8 +41,6 @@
     magit
     multiple-cursors
     projectile
-    powerline
-    rinari
     sass-mode
     saveplace
     shell-pop
@@ -65,11 +64,6 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; (require 'powerline)
-;; (powerline-default-theme)
-(setq sml/theme 'dark)
-(sml/setup)
-
 (require 'saveplace)
 (setq save-place-file (concat user-emacs-directory ".cache/places"))
 (setq-default save-place t)
@@ -88,6 +82,7 @@
 (add-to-list 'load-path emacs-dir)
 
 (require 'setup-defaults)
+(require 'setup-smart-mode-line)
 (require 'setup-uniquify)
 (require 'setup-saveplace)
 (require 'setup-savehist)
@@ -123,6 +118,13 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; Setup emmet
+(when (require 'emmet-mode nil t)
+  (add-hook 'html-mode-hook 'emmet-mode)
+  (add-hook 'web-mode-hook 'emmet-mode))
+  (add-hook 'sgml-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook  'emmet-mode)
 
 ;; Setup smartparens
 (require 'smartparens-config)

@@ -33,6 +33,9 @@
   kept-old-versions 5    ; and how many of the old
   )
 
+;; Setup winner-mode
+(winner-mode 1)
+
 (display-time)
 (setq inhibit-startup-message t) ;; Get rid of the default startup message
 (setq-default indent-tabs-mode nil) ;; No tabs, just spaces
