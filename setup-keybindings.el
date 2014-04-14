@@ -13,10 +13,14 @@
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "C-h") 'helm-dash)
 (global-set-key (kbd "C-d") 'switch-to-buffer)
-(global-set-key (kbd "C-0") 'delete-other-windows)
 (global-set-key (kbd "C-S-w") 'delete-other-windows)
 (global-set-key (kbd "C-S-k") 'kill-buffer-and-window)
 (global-set-key (kbd "C-S-s") 'shell-pop)
+(global-set-key (kbd "<C-up>") 'shrink-window)
+(global-set-key (kbd "<C-down>") 'enlarge-window)
+(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-0") 'balance-windows)
 
 ;; Plugin bindings
 
@@ -33,9 +37,12 @@
 (define-key evil-motion-state-map (kbd "C-f") 'evil-search-forward)
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 (define-key evil-insert-state-map (kbd "C-RET") 'emmet-expand-line)
+(define-key evil-normal-state-map (kbd "M-v") 'evil-visual-block)
+(define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
+
 
 (define-key evil-normal-state-map (kbd "ga") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "ge") 'end-of-visual-line)
+(define-key evil-motion-state-map (kbd "ge") 'evil-last-non-blank)
 (define-key evil-insert-state-map [remap evil-delete-backward-char-and-join] 'hungry-delete-backward)
 
 ;; Expand region

@@ -7,7 +7,7 @@
 (setq ac-use-fuzzy 1)
 (setq ac-disable-faces nil) ;; Autocomplete in strings
 (ac-flyspell-workaround)
-(add-hook 'robe-mode-hook 'robe-ac-setup)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 (add-to-list 'ac-modes 'web-mode)
 
 ;; Enable company-mode

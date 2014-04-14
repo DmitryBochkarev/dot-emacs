@@ -1,5 +1,5 @@
 ;; Default global configuration
-(set-frame-font "Source Code Pro for Powerline-17") ;; Default font and font size
+(set-frame-font "Source Code Pro for Powerline-15") ;; Default font and font size
 (setq-default line-spacing 5) ;; Set line spacing
 
 ;; Start in fullscreen

@@ -209,6 +209,17 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir)))))
+
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -216,7 +227,7 @@ Repeated invocations toggle between the two most recently open buffers."
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector (vector "#4d4d4c" "#c82829" "#718c00" "#eab700" "#4271ae" "#8959a8" "#3e999f" "#ffffff"))
- '(custom-enabled-themes (quote (tango-plus)))
+ '(custom-enabled-themes (quote (dichromacy)))
  '(custom-safe-themes (quote ("7c043c631cfe141e6cb08936ae92396619266d67a1ccae59a7aa63064b24aa8f" "a30d5f217d1a697f6d355817ac344d906bb0aae3e888d7abaa7595d5a4b7e2e3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" default)))
  '(fci-rule-color "#efefef")
  '(vc-annotate-background nil)
