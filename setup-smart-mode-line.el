@@ -19,6 +19,7 @@
 (add-to-list 'sml/hidden-modes " Undo-Tree")
 (add-to-list 'sml/hidden-modes " Emmet")
 (add-to-list 'sml/hidden-modes " MRev")
+(add-to-list 'sml/hidden-modes " Robe")
 (add-to-list 'sml/hidden-modes " yas")
 (add-to-list 'sml/hidden-modes " ing")
 

@@ -43,4 +43,10 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
+;; Treat underscore word as a whole
+(add-hook 'ruby-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'js-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+
 (provide 'setup-ruby)

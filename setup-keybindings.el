@@ -11,11 +11,11 @@
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-a") 'recentf-ido-find-file)
 (global-set-key (kbd "C-o") 'find-file)
-(global-set-key (kbd "C-h") 'helm-dash)
 (global-set-key (kbd "C-d") 'switch-to-buffer)
 (global-set-key (kbd "C-S-w") 'delete-other-windows)
-(global-set-key (kbd "C-S-k") 'kill-buffer-and-window)
-(global-set-key (kbd "C-S-s") 'shell-pop)
+(global-set-key (kbd "C-S-w") 'delete-window)
+(global-set-key (kbd "C-S-k") 'kill-this-buffer)
+(global-set-key (kbd "C-3") 'shell-pop)
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
@@ -38,7 +38,18 @@
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 (define-key evil-insert-state-map (kbd "C-RET") 'emmet-expand-line)
 (define-key evil-normal-state-map (kbd "M-v") 'evil-visual-block)
+(define-key evil-insert-state-map (kbd "C-u") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
+(define-key evil-normal-state-map (kbd "C-S-v") 'mark-whole-buffer)
+
+;; Ido mode keymap
+(add-hook 'ido-setup-hook 'ido-my-keys)
+
+(defun ido-my-keys ()
+  "Add my keybindings for ido."
+  (define-key ido-completion-map (kbd "TAB") 'ido-next-match)
+  (define-key ido-completion-map (kbd "<backtab>") 'ido-prev-match)
+  )
 
 
 (define-key evil-normal-state-map (kbd "ga") 'evil-first-non-blank)
@@ -51,9 +62,9 @@
 (define-key evil-visual-state-map (kbd "S") 'er/contract-region)
 
 ;; Projectile
-(global-set-key (kbd "C-p") 'projectile-switch-project)
+(global-set-key (kbd "C-p") 'projectile-persp-switch-project)
 (global-set-key (kbd "C-t") 'projectile-find-file)
-(global-set-key (kbd "C-S-f") 'projectile-ag)
+(global-set-key (kbd "C-S-f") 'ag-project-files)
 (global-set-key (kbd "C-r") 'projectile-replace)
 
 ;; Rinari
@@ -65,6 +76,11 @@
 ;; Multiplecursors
 (global-set-key (kbd "C-n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-S-n") 'mc/mark-previous-like-this)
+
+;; Helm
+(define-key helm-map (kbd "TAB") 'helm-next-line)
+(define-key helm-map (kbd "<backtab>") 'helm-previous-line)
+;; (global-set-key (kbd "C-h") 'helm-dash)
 
 ;; Magit
 

@@ -1,6 +1,7 @@
 ;; Default global configuration
-(set-frame-font "Source Code Pro for Powerline-15") ;; Default font and font size
-(setq-default line-spacing 5) ;; Set line spacing
+(set-frame-font "Source Code Pro for Powerline-20") ;; Default font and font size
+(setq-default line-spacing 10) ;; Set line spacing
+(setq scroll-margin 5) ;; Margin when scrolling should occur
 
 ;; Start in fullscreen
 ;; (set-frame-parameter nil 'fullscreen 'fullboth)
@@ -18,8 +19,11 @@
 (setq split-height-threshold 0)
 (setq split-width-threshold nil)
 
+(global-hl-line-mode 1)
 (setq require-final-newline t) ;; Require new line at the end of file
 (global-visual-line-mode t) ;; Nicely wrap text
+(setq-default truncate-lines t) ;; Turn off word-wrap
+(setq truncate-partial-width-windows t)
 (delete-selection-mode t) ;; Delete selection on write
 (show-paren-mode t) ;; Higlight matching brackets
 (setq-default show-trailing-whitespace t)
@@ -40,6 +44,7 @@
 (setq inhibit-startup-message t) ;; Get rid of the default startup message
 (setq-default indent-tabs-mode nil) ;; No tabs, just spaces
 (global-linum-mode t) ;; Turn on line numbers in the gutter
+(column-number-mode 1) ;; Show column number
 (defalias 'list-buffers 'ibuffer) ;; Set ibuffer as a default buffer list
 (fringe-mode 16) ;;fringe
 (setq ring-bell-function (lambda () ())) ;; Disable ringtone

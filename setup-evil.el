@@ -13,12 +13,19 @@
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
 
+;; Set evil indentation behaviour
+(setq evil-shift-width 2)
+(add-hook 'ruby-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width ruby-indent-level))))
+
 ;; Disable evil for certain major-modes
 (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode comint-mode skewer-repl-mode
                 profiler-report-mode
                 erc-mode weechat-mode
                 direx:direx-mode
                 makey-key-mode
+                magit-blame-mode
                 project-explorer-mode))
   (evil-set-initial-state mode 'emacs))
 (evil-set-initial-state 'git-commit-mode 'insert)

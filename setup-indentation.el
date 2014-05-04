@@ -2,6 +2,7 @@
 (require 'evil)
 (setq-default tab-width 2) ;; Set default tab width to 2
 (setq js-indent-level 2)
+(custom-set-variables '(coffee-tab-width 2))
 (setq feature-indent-level 2)
 
 ;; Enable autoindent

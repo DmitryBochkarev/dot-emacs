@@ -33,14 +33,18 @@
     grizzl
     helm
     helm-projectile
+    helm-ag
     haml-mode
     hungry-delete
     ido-vertical-mode
     indent-guide
     js2-mode
+    jabber
     magit
     multiple-cursors
     projectile
+    persp-projectile
+    project-explorer
     sass-mode
     saveplace
     shell-pop
@@ -82,30 +86,9 @@
 (add-to-list 'load-path emacs-dir)
 
 (require 'setup-defaults)
-(require 'setup-smart-mode-line)
-(require 'setup-uniquify)
-(require 'setup-saveplace)
-(require 'setup-savehist)
-(require 'setup-recentf)
-(require 'setup-indentation)
-(require 'setup-ag)
-(require 'setup-evil)
-(require 'setup-dired)
-(require 'setup-ido-flex)
-(require 'setup-helm)
-(require 'setup-ruby)
-(require 'setup-magit)
-(require 'setup-flyspell)
-(require 'setup-git-gutter)
-(require 'setup-autocomplete)
-(require 'setup-projectile)
 
 ;; Enable Evil Nerd Commenter
 (evilnc-default-hotkeys)
-
-;; Enable Sass mode
-(autoload 'scss-mode "scss-mode")
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 ;; Setup webmode
 (require 'web-mode)
@@ -119,17 +102,18 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
+;; Setup js2-mode
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent-p t)
+(add-to-list 'auto-mode-alist '("\\.js.erb\\'" . js2-mode))
+
 ;; Setup emmet
 (when (require 'emmet-mode nil t)
   (add-hook 'html-mode-hook 'emmet-mode)
   (add-hook 'web-mode-hook 'emmet-mode))
   (add-hook 'sgml-mode-hook 'emmet-mode)
   (add-hook 'css-mode-hook  'emmet-mode)
-
-;; Setup smartparens
-(require 'smartparens-config)
-(smartparens-global-mode t)
-(show-smartparens-global-mode +1)
+  (setq emmet-preview-default nil)
 
 ;; Enable yasnippets
 (yas-global-mode t)
@@ -141,6 +125,28 @@
 ;; Setup shell pop
 (require 'shell-pop)
 
+(require 'setup-smart-mode-line)
+(require 'setup-uniquify)
+(require 'setup-saveplace)
+(require 'setup-savehist)
+(require 'setup-recentf)
+(require 'setup-sass)
+(require 'setup-indentation)
+(require 'setup-ag)
+(require 'setup-dired)
+(require 'setup-ido-flex)
+(require 'setup-helm)
+(require 'setup-ruby)
+(require 'setup-magit)
+(require 'setup-flyspell)
+(require 'setup-git-gutter)
+(require 'setup-autocomplete)
+(require 'setup-projectile)
+(require 'setup-smartparens)
+(require 'setup-jabber)
+(require 'setup-project-explorer)
+(require 'setup-evil)
+
 ;; Mac specific configuration
 (setq is-mac (equal system-type 'darwin))
 (when is-mac (require 'setup-mac))
@@ -148,11 +154,6 @@
 (require 'setup-keybindings)
 
 ;; Custom functions
-(defun gstatus ()
-  "Run git status"
-  (interactive)
-  (magit-status))
-
 (defun close-all-buffers ()
   "Kill other buffers"
   (interactive)
@@ -220,6 +221,10 @@ Repeated invocations toggle between the two most recently open buffers."
   "Moves the point to the newly created window after splitting."
   (other-window 1))
 
+;; (defadvice evil-paste-after (after invent-after-paste activate)
+;;   "Calls the indent function after pasting from register."
+;;   (evil-indent))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -227,16 +232,12 @@ Repeated invocations toggle between the two most recently open buffers."
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector (vector "#4d4d4c" "#c82829" "#718c00" "#eab700" "#4271ae" "#8959a8" "#3e999f" "#ffffff"))
- '(custom-enabled-themes (quote (dichromacy)))
- '(custom-safe-themes (quote ("7c043c631cfe141e6cb08936ae92396619266d67a1ccae59a7aa63064b24aa8f" "a30d5f217d1a697f6d355817ac344d906bb0aae3e888d7abaa7595d5a4b7e2e3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" default)))
+ '(coffee-tab-width 2)
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes (quote ("60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "c3fb7a13857e799bba450bb81b9101ef4960281c4d5908e05ecac9204c526c8a" "cd70962b469931807533f5ab78293e901253f5eeb133a46c2965359f23bfb2ea" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "bad832ac33fcbce342b4d69431e7393701f0823a3820f6030ccc361edd2a4be4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "7c043c631cfe141e6cb08936ae92396619266d67a1ccae59a7aa63064b24aa8f" "a30d5f217d1a697f6d355817ac344d906bb0aae3e888d7abaa7595d5a4b7e2e3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" default)))
  '(fci-rule-color "#efefef")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map (quote ((20 . "#c82829") (40 . "#f5871f") (60 . "#eab700") (80 . "#718c00") (100 . "#3e999f") (120 . "#4271ae") (140 . "#8959a8") (160 . "#c82829") (180 . "#f5871f") (200 . "#eab700") (220 . "#718c00") (240 . "#3e999f") (260 . "#4271ae") (280 . "#8959a8") (300 . "#c82829") (320 . "#f5871f") (340 . "#eab700") (360 . "#718c00"))))
  '(vc-annotate-very-old-color nil))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(set-face-background 'hl-line nil)
+(set-face-foreground 'highlight nil)
