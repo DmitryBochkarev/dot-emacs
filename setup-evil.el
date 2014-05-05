@@ -1,6 +1,12 @@
 (require 'evil)
 (evil-mode 1)
 
+(setq evil-emacs-state-cursor  '("red" box))
+(setq evil-normal-state-cursor '("yellow" box))
+(setq evil-visual-state-cursor '("green" box))
+(setq evil-insert-state-cursor '("yellow" bar))
+(setq evil-motion-state-cursor '("gray" box))
+
 (setq evil-default-cursor t)
 
 (require 'evil-numbers)
@@ -19,16 +25,28 @@
   (function (lambda ()
           (setq evil-shift-width ruby-indent-level))))
 
+;; Custom commands
+(evil-ex-define-cmd "gs" 'magit-status)
+(evil-ex-define-cmd "glf" 'magit-file-log)
+(evil-ex-define-cmd "gl" 'magit-log)
+(evil-ex-define-cmd "gb" 'magit-blame-mod)
+(evil-ex-define-cmd "jbc" 'jabber-connect-all)
+(evil-ex-define-cmd "chat" 'jabber-chat-with)
+
 ;; Disable evil for certain major-modes
 (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode comint-mode skewer-repl-mode
                 profiler-report-mode
                 erc-mode weechat-mode
                 direx:direx-mode
                 makey-key-mode
+                jabber-roster-mode
                 magit-blame-mode
                 project-explorer-mode))
   (evil-set-initial-state mode 'emacs))
+
+;; Set initial mode to insert
 (evil-set-initial-state 'git-commit-mode 'insert)
+(evil-set-initial-state 'jabber-chat-mode 'insert)
 
 ;; Centre screen around a search
 (defadvice

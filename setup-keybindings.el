@@ -9,9 +9,9 @@
 (global-set-key (kbd "M-d") 'evil-scroll-down)
 (global-set-key (kbd "C-S-b") 'pop-tag-mark)
 (global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-a") 'recentf-ido-find-file)
+(global-set-key (kbd "C-t") 'recentf-ido-find-file)
 (global-set-key (kbd "C-o") 'find-file)
-(global-set-key (kbd "C-d") 'switch-to-buffer)
+(global-set-key (kbd "C-a") 'switch-to-buffer)
 (global-set-key (kbd "C-S-w") 'delete-other-windows)
 (global-set-key (kbd "C-S-w") 'delete-window)
 (global-set-key (kbd "C-S-k") 'kill-this-buffer)
@@ -42,6 +42,9 @@
 (define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
 (define-key evil-normal-state-map (kbd "C-S-v") 'mark-whole-buffer)
 
+;; Haml mode overwrites
+(define-key haml-mode-map (kbd "<backspace>") nil)
+
 ;; Ido mode keymap
 (add-hook 'ido-setup-hook 'ido-my-keys)
 
@@ -63,7 +66,7 @@
 
 ;; Projectile
 (global-set-key (kbd "C-p") 'projectile-persp-switch-project)
-(global-set-key (kbd "C-t") 'projectile-find-file)
+(global-set-key (kbd "C-d") 'projectile-find-file)
 (global-set-key (kbd "C-S-f") 'ag-project-files)
 (global-set-key (kbd "C-r") 'projectile-replace)
 
