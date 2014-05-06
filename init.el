@@ -28,6 +28,8 @@
     flycheck
     flyspell
     feature-mode
+    gh
+    gist
     git-commit-mode
     git-rebase-mode
     git-gutter-fringe+
