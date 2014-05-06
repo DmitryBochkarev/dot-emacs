@@ -8,6 +8,9 @@
 (defvar required-packages
   '(
     ac-js2
+    ac-inf-ruby
+    ac-etags
+    ac-emmet
     ag
     auto-complete
     autopair
