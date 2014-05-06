@@ -139,6 +139,7 @@
 (require 'setup-ruby)
 (require 'setup-magit)
 (require 'setup-flyspell)
+(require 'setup-flycheck)
 (require 'setup-git-gutter)
 (require 'setup-autocomplete)
 (require 'setup-projectile)
