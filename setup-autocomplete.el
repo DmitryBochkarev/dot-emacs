@@ -13,6 +13,7 @@
 (add-to-list 'ac-modes 'web-mode)
 (add-to-list 'ac-modes 'yaml-mode)
 (add-to-list 'ac-modes 'sass-mode)
+(add-to-list 'ac-modes 'coffee-mode)
 
 ;; Enable Robe
 ;;(add-hook 'robe-mode-hook 'ac-robe-setup)
