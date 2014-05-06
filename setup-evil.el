@@ -24,6 +24,16 @@
 (add-hook 'ruby-mode-hook
   (function (lambda ()
           (setq evil-shift-width ruby-indent-level))))
+(add-hook 'haml-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width ruby-indent-level))))
+(add-hook 'web-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width ruby-indent-level))))
+
+(add-hook 'js2-mode-hook
+  (function (lambda ()
+          (setq evil-shift-width ruby-indent-level))))
 
 ;; Custom commands
 (evil-ex-define-cmd "gs" 'magit-status)
