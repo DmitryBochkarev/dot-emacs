@@ -38,6 +38,7 @@
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 (define-key evil-insert-state-map (kbd "C-RET") 'emmet-expand-line)
 (define-key evil-normal-state-map (kbd "M-v") 'evil-visual-block)
+(define-key evil-normal-state-map (kbd "RET") 'evil-search-next)
 (define-key evil-insert-state-map (kbd "C-u") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-o") 'evil-open-below)
