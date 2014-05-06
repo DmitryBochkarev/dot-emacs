@@ -15,6 +15,8 @@
 (add-to-list 'ac-modes 'sass-mode)
 (add-to-list 'ac-modes 'coffee-mode)
 
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
 ;; Enable Robe
 ;;(add-hook 'robe-mode-hook 'ac-robe-setup)
 ;;(add-hook 'after-init-hook 'global-company-mode)

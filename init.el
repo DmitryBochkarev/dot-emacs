@@ -7,6 +7,7 @@
 
 (defvar required-packages
   '(
+    ac-js2
     ag
     auto-complete
     autopair
