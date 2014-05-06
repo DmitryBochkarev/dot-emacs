@@ -70,6 +70,7 @@
 
 ;; Projectile
 (global-set-key (kbd "C-p") 'projectile-persp-switch-project)
+(global-set-key (kbd "C-S-p") 'persp-switch)
 (global-set-key (kbd "C-d") 'projectile-find-file)
 (global-set-key (kbd "C-S-f") 'ag-project-files)
 (global-set-key (kbd "C-r") 'projectile-replace)
