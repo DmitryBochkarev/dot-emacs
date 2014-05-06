@@ -40,6 +40,8 @@
 (define-key evil-normal-state-map (kbd "M-v") 'evil-visual-block)
 (define-key evil-insert-state-map (kbd "C-u") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
+(define-key evil-insert-state-map (kbd "C-o") 'evil-open-below)
+(define-key evil-insert-state-map (kbd "C-S-o") 'evil-open-above)
 (define-key evil-normal-state-map (kbd "C-S-v") 'mark-whole-buffer)
 
 ;; Haml mode overwrites
