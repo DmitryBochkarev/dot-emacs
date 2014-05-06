@@ -45,6 +45,7 @@
     projectile
     persp-projectile
     project-explorer
+    popup
     sass-mode
     saveplace
     shell-pop
@@ -74,7 +75,7 @@
 
 ;; Set path to .emacs.d
 (setq emacs-dir (file-name-directory
-                (or (buffer-file-name) load-file-name)))
+                 (or (buffer-file-name) load-file-name)))
 
 ;; Set path to manually installed plugins
 (setq plugins-dir (expand-file-name "plugins" emacs-dir))
@@ -111,9 +112,9 @@
 (when (require 'emmet-mode nil t)
   (add-hook 'html-mode-hook 'emmet-mode)
   (add-hook 'web-mode-hook 'emmet-mode))
-  (add-hook 'sgml-mode-hook 'emmet-mode)
-  (add-hook 'css-mode-hook  'emmet-mode)
-  (setq emmet-preview-default nil)
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+(setq emmet-preview-default nil)
 
 ;; Enable yasnippets
 (yas-global-mode t)
@@ -159,8 +160,8 @@
   "Kill other buffers"
   (interactive)
   (mapc 'kill-buffer
-    (delq (current-buffer)
-      (remove-if-not 'buffer-file-name (buffer-list)))))
+        (delq (current-buffer)
+              (remove-if-not 'buffer-file-name (buffer-list)))))
 
 (defun create-snippet (filename)
   (interactive "s")
@@ -195,11 +196,11 @@ When enabled trailing whitespace is removed before saving."
 
 (defun untabify-hook ()
   (let ((tab-sensitive-modes '(makefile-mode
-                              makefile-automake-mode
-                              makefile-gmake-mode
-                              makefile-imake-mode
-                              makefile-makepp-mode
-                              makefile-bsdmake-mode)))
+                               makefile-automake-mode
+                               makefile-gmake-mode
+                               makefile-imake-mode
+                               makefile-makepp-mode
+                               makefile-bsdmake-mode)))
     (if (not (member major-mode tab-sensitive-modes))
         (untabify (point-min) (point-max)))))
 
