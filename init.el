@@ -37,10 +37,12 @@
     haml-mode
     hungry-delete
     ido-vertical-mode
+    ido-ubiquitous
     indent-guide
     js2-mode
     jabber
     magit
+    markdown-mode
     multiple-cursors
     projectile
     persp-projectile
