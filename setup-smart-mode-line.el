@@ -22,5 +22,11 @@
 (add-to-list 'sml/hidden-modes " Robe")
 (add-to-list 'sml/hidden-modes " yas")
 (add-to-list 'sml/hidden-modes " ing")
+(add-to-list 'sml/hidden-modes " Projectile")
+(add-to-list 'sml/hidden-modes " Helm")
+(add-to-list 'sml/hidden-modes " vl")
+(add-to-list 'sml/hidden-modes " Wrap")
+(add-to-list 'sml/hidden-modes " W")
+(add-to-list 'sml/hidden-modes " Rbow")
 
 (provide 'setup-smart-mode-line)
