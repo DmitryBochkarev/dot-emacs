@@ -83,4 +83,10 @@
     (recenter))
 (ad-activate 'evil-goto-line)
 
+(defadvice
+  evil-paste-after
+  (after evil-paste-after-indent activate)
+  (indent-region (point-min) (point-max))
+  (message (point-min)))
+
 (provide 'setup-evil)
