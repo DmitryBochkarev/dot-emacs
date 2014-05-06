@@ -144,6 +144,7 @@
 (require 'setup-flyspell)
 (require 'setup-flycheck)
 (require 'setup-git-gutter)
+(require 'setup-markdown)
 (require 'setup-autocomplete)
 (require 'setup-projectile)
 (require 'setup-smartparens)
