@@ -22,18 +22,18 @@
 ;; Set evil indentation behaviour
 (setq evil-shift-width 2)
 (add-hook 'ruby-mode-hook
-  (function (lambda ()
-          (setq evil-shift-width ruby-indent-level))))
+          (function (lambda ()
+                      (setq evil-shift-width ruby-indent-level))))
 (add-hook 'haml-mode-hook
-  (function (lambda ()
-          (setq evil-shift-width ruby-indent-level))))
+          (function (lambda ()
+                      (setq evil-shift-width ruby-indent-level))))
 (add-hook 'web-mode-hook
-  (function (lambda ()
-          (setq evil-shift-width ruby-indent-level))))
+          (function (lambda ()
+                      (setq evil-shift-width ruby-indent-level))))
 
 (add-hook 'js2-mode-hook
-  (function (lambda ()
-          (setq evil-shift-width ruby-indent-level))))
+          (function (lambda ()
+                      (setq evil-shift-width ruby-indent-level))))
 
 ;; Custom commands
 (evil-ex-define-cmd "gs" 'magit-status)
@@ -42,16 +42,19 @@
 (evil-ex-define-cmd "gb" 'magit-blame-mod)
 (evil-ex-define-cmd "jbc" 'jabber-connect-all)
 (evil-ex-define-cmd "chat" 'jabber-chat-with)
+(evil-ex-define-cmd "ruby-hash" 'ruby-toggle-hash-syntax)
+(evil-ex-define-cmd "todo-add" 'ort/capture-todo)
+(evil-ex-define-cmd "todo-list" 'ort/goto-todos)
 
 ;; Disable evil for certain major-modes
 (dolist (mode '(eshell-mode shell-mode term-mode terminal-mode comint-mode skewer-repl-mode
-                profiler-report-mode
-                erc-mode weechat-mode
-                direx:direx-mode
-                makey-key-mode
-                jabber-roster-mode
-                magit-blame-mode
-                project-explorer-mode))
+                            profiler-report-mode
+                            erc-mode weechat-mode
+                            direx:direx-mode
+                            makey-key-mode
+                            jabber-roster-mode
+                            magit-blame-mode
+                            project-explorer-mode))
   (evil-set-initial-state mode 'emacs))
 
 ;; Set initial mode to insert
@@ -60,27 +63,27 @@
 
 ;; Centre screen around a search
 (defadvice
-    evil-search-forward
-    (after evil-search-forward-recenter activate)
-    (recenter))
+  evil-search-forward
+  (after evil-search-forward-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-forward)
 
 (defadvice
-    evil-search-next
-    (after evil-search-next-recenter activate)
-    (recenter))
+  evil-search-next
+  (after evil-search-next-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-next)
 
 (defadvice
-    evil-search-previous
-    (after evil-search-previous-recenter activate)
-    (recenter))
+  evil-search-previous
+  (after evil-search-previous-recenter activate)
+  (recenter))
 (ad-activate 'evil-search-previous)
 
 (defadvice
-    evil-goto-line
-    (after evil-goto-line-recenter activate)
-    (recenter))
+  evil-goto-line
+  (after evil-goto-line-recenter activate)
+  (recenter))
 (ad-activate 'evil-goto-line)
 
 (defadvice

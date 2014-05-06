@@ -50,6 +50,7 @@
     magit
     markdown-mode
     multiple-cursors
+    org-repo-todo
     projectile
     persp-projectile
     project-explorer
