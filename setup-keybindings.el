@@ -43,7 +43,11 @@
 (define-key evil-normal-state-map (kbd "C-S-v") 'mark-whole-buffer)
 
 ;; Haml mode overwrites
-(define-key haml-mode-map (kbd "<backspace>") nil)
+(eval-after-load "haml-mode"
+  '(define-key haml-mode-map (kbd "<backspace>") nil))
+(eval-after-load "yaml-mode"
+  '(define-key yaml-mode-map (kbd "<backspace>") nil))
+
 
 ;; Ido mode keymap
 (add-hook 'ido-setup-hook 'ido-my-keys)
