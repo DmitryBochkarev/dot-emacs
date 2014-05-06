@@ -85,8 +85,8 @@
 (global-set-key (kbd "C-S-n") 'mc/mark-previous-like-this)
 
 ;; Helm
-(define-key helm-map (kbd "TAB") 'helm-next-line)
-(define-key helm-map (kbd "<backtab>") 'helm-previous-line)
+;; (define-key helm-map (kbd "TAB") 'helm-next-line)
+;; (define-key helm-map (kbd "<backtab>") 'helm-previous-line))
 ;; (global-set-key (kbd "C-h") 'helm-dash)
 
 ;; Magit
