@@ -30,6 +30,12 @@
   '(progn
      (ac-etags-setup)))
 
+(defun dabbrev-allow-symbols ()
+  (setq-local dabbrev-abbrev-skip-leading-regexp ":"))
+
+(add-hook 'ruby-mode-hook 'dabbrev-allow-symbols)
+(add-hook 'clojure-mode-hook 'dabbrev-allow-symbols)
+
 ;;Enable Robe
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 ;;(add-hook 'after-init-hook 'global-company-mode)

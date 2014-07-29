@@ -20,7 +20,8 @@
 (setq split-height-threshold 0)
 (setq split-width-threshold nil)
 
-(global-hl-line-mode nil)
+(hl-line-mode -1)
+(global-hl-line-mode -1)
 (setq require-final-newline t) ;; Require new line at the end of file
 (global-visual-line-mode t) ;; Nicely wrap text
 (setq-default truncate-lines t) ;; Turn off word-wrap
@@ -44,7 +45,7 @@
 (display-time)
 (setq inhibit-startup-message t) ;; Get rid of the default startup message
 (setq-default indent-tabs-mode nil) ;; No tabs, just spaces
-(global-linum-mode nil) ;; Turn on line numbers in the gutter
+(global-linum-mode -1) ;; Turn on line numbers in the gutter
 (column-number-mode 1) ;; Show column number
 (defalias 'list-buffers 'ibuffer) ;; Set ibuffer as a default buffer list
 (fringe-mode 16) ;;fringe

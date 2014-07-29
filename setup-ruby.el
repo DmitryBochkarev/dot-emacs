@@ -27,6 +27,13 @@
 (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
 
+;; Update Ruby syntax definition
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (modify-syntax-entry ?$ "w")
+            (modify-syntax-entry ?: ".")
+            (modify-syntax-entry ?@ "w")))
+
 ;; Disable ruby deep indent
 (setq ruby-deep-indent-paren nil)
 

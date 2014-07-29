@@ -1,5 +1,5 @@
 ;; Smart Mode Line
-(setq sml/theme 'dark)
+(setq sml/theme 'automatic)
 (sml/setup)
 (setq sml/shorten-directory t)
 (setq sml/shorten-modes t)
@@ -34,5 +34,6 @@
 (add-to-list 'sml/hidden-modes " robe")
 (add-to-list 'sml/hidden-modes " ElDoc")
 (add-to-list 'sml/hidden-modes " RBlock")
+(add-to-list 'sml/hidden-modes " Google")
 
 (provide 'setup-smart-mode-line)
