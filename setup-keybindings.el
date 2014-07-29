@@ -9,9 +9,11 @@
 (global-set-key (kbd "M-d") 'evil-scroll-down)
 (global-set-key (kbd "C-S-b") 'pop-tag-mark)
 (global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-t") 'recentf-ido-find-file)
+(global-set-key (kbd "C-a") 'recentf-ido-find-file)
+(define-key dired-mode-map (kbd "\C-o") nil)
 (global-set-key (kbd "C-o") 'find-file)
-(global-set-key (kbd "C-a") 'switch-to-buffer)
+(global-set-key (kbd "C-S-o") 'ido-dired)
+(global-set-key (kbd "C-d") 'switch-to-buffer)
 (global-set-key (kbd "C-S-w") 'delete-other-windows)
 (global-set-key (kbd "C-S-w") 'delete-window)
 (global-set-key (kbd "C-S-k") 'kill-this-buffer)
@@ -33,12 +35,14 @@
 (define-key evil-normal-state-map (kbd "C-S-n") nil)
 (define-key evil-normal-state-map (kbd "C-p") nil)
 (define-key evil-normal-state-map (kbd "C-t") nil)
+(define-key evil-normal-state-map (kbd "C-i") nil)
 (define-key evil-normal-state-map (kbd "DEL") 'switch-to-previous-buffer)
 (define-key evil-motion-state-map (kbd "C-f") 'evil-search-forward)
 (define-key evil-motion-state-map (kbd "SPC") 'evil-ex)
 (define-key evil-insert-state-map (kbd "C-RET") 'emmet-expand-line)
 (define-key evil-normal-state-map (kbd "M-v") 'evil-visual-block)
 (define-key evil-normal-state-map (kbd "RET") 'evil-search-next)
+(define-key evil-normal-state-map (kbd "C-l") 'goto-line)
 (define-key evil-insert-state-map (kbd "C-u") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-z") 'undo-tree-undo)
 (define-key evil-insert-state-map (kbd "C-o") 'evil-open-below)
@@ -50,6 +54,11 @@
   '(define-key haml-mode-map (kbd "<backspace>") nil))
 (eval-after-load "yaml-mode"
   '(define-key yaml-mode-map (kbd "<backspace>") nil))
+(eval-after-load "company-mode"
+  '(progn
+     (define-key company-active-map (kbd "<tab>") 'company-select-next)
+     (define-key company-active-map (kbd "<backtab>") 'company-select-previous)
+     ))
 
 
 ;; Ido mode keymap
@@ -74,15 +83,15 @@
 ;; Projectile
 (global-set-key (kbd "C-p") 'projectile-persp-switch-project)
 (global-set-key (kbd "C-S-p") 'persp-switch)
-(global-set-key (kbd "C-d") 'projectile-find-file)
-(global-set-key (kbd "C-S-f") 'ag-project-files)
+(global-set-key (kbd "C-t") 'projectile-find-file)
+(global-set-key (kbd "C-S-r") 'projectile-find-tag)
+(global-set-key (kbd "C-S-f") 'projectile-grep)
 (global-set-key (kbd "C-r") 'projectile-replace)
 
 ;; Rinari
 (define-key evil-insert-state-map (kbd "C-S-i") 'rinari-insert-erb-skeleton)
 
-;; Robe
-(global-set-key (kbd "C-b") 'robe-jump)
+(global-set-key (kbd "C-b") 'find-tag)
 
 ;; Multiplecursors
 (global-set-key (kbd "C-n") 'mc/mark-next-like-this)
@@ -90,7 +99,7 @@
 
 ;; Helm
 ;; (define-key helm-map (kbd "TAB") 'helm-next-line)
-;; (define-key helm-map (kbd "<backtab>") 'helm-previous-line))
+;; (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
 ;; (global-set-key (kbd "C-h") 'helm-dash)
 
 ;; Magit
@@ -101,6 +110,7 @@
 
 ;; Project explorer
 (define-key evil-normal-state-map (kbd "gt") 'project-explorer-open)
+(define-key evil-normal-state-map (kbd "C-1") 'project-explorer-open)
 
 ;; Rspec
 (define-key evil-normal-state-map (kbd "C-S-r s") 'rspec-verify-single)

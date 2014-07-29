@@ -27,6 +27,9 @@
 (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
 
+;; Disable ruby deep indent
+(setq ruby-deep-indent-paren nil)
+
 ;; Enable Rspec
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
@@ -38,15 +41,19 @@
 (add-hook 'enh-ruby-mode-hook 'yard-mode)
 
 ;; Enable Feature mode (Cucumber)
-(setq feature-default-language "fi")
-(setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
 (require 'feature-mode)
+(setq feature-default-language "fi")
+;; (setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; Treat underscore word as a whole
 (add-hook 'ruby-mode-hook
           (lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'js-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'js2-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'web-mode-hook
           (lambda () (modify-syntax-entry ?_ "w")))
 
 (provide 'setup-ruby)

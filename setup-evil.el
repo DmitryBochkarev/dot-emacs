@@ -1,10 +1,10 @@
 (require 'evil)
 (evil-mode 1)
 
-(setq evil-emacs-state-cursor  '("red" box))
-(setq evil-normal-state-cursor '("yellow" box))
-(setq evil-visual-state-cursor '("green" box))
-(setq evil-insert-state-cursor '("yellow" bar))
+(setq evil-emacs-state-cursor  '("green" box))
+(setq evil-normal-state-cursor '("white" box))
+(setq evil-visual-state-cursor '("red" box))
+(setq evil-insert-state-cursor '("white" bar))
 (setq evil-motion-state-cursor '("gray" box))
 
 (setq evil-default-cursor t)
@@ -39,7 +39,10 @@
 (evil-ex-define-cmd "gs" 'magit-status)
 (evil-ex-define-cmd "glf" 'magit-file-log)
 (evil-ex-define-cmd "gl" 'magit-log)
-(evil-ex-define-cmd "gb" 'magit-blame-mod)
+(evil-ex-define-cmd "gb" 'magit-blame-mode)
+(evil-ex-define-cmd "rs" 'rspec-verify-single)
+(evil-ex-define-cmd "rr" 'rspec-rerun)
+(evil-ex-define-cmd "ra" 'rspec-verify-all)
 (evil-ex-define-cmd "jbc" 'jabber-connect-all)
 (evil-ex-define-cmd "chat" 'jabber-chat-with)
 (evil-ex-define-cmd "ruby-hash" 'ruby-toggle-hash-syntax)
@@ -86,10 +89,11 @@
   (recenter))
 (ad-activate 'evil-goto-line)
 
-(defadvice
-  evil-paste-after
-  (after evil-paste-after-indent activate)
-  (indent-region (point-min) (point-max))
-  (message (point-min)))
+;; Disabling till I find a solution
+;; (defadvice
+;;   evil-paste-after
+;;   (after evil-paste-after-indent activate)
+;;   (indent-region (point-min) (point-max))
+;;   (message (point-min)))
 
 (provide 'setup-evil)

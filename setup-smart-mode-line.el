@@ -28,5 +28,11 @@
 (add-to-list 'sml/hidden-modes " Wrap")
 (add-to-list 'sml/hidden-modes " W")
 (add-to-list 'sml/hidden-modes " Rbow")
+(add-to-list 'sml/hidden-modes " YARD")
+(add-to-list 'sml/hidden-modes " company")
+(add-to-list 'sml/hidden-modes " rt")
+(add-to-list 'sml/hidden-modes " robe")
+(add-to-list 'sml/hidden-modes " ElDoc")
+(add-to-list 'sml/hidden-modes " RBlock")
 
 (provide 'setup-smart-mode-line)

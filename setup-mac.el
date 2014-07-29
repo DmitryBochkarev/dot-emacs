@@ -5,5 +5,6 @@
 
 (setq mac-command-modifier 'control)
 (setq mac-control-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (provide 'setup-mac)
